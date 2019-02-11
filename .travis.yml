@@ -1,11 +1,11 @@
 language: generic
 
+env:
+  - PROJECT=projects/hello/
+  - PROJECT=projects/world/
+  - PROJECT=projects/he/
+
 matrix:
   include:
     - stage: Checks
-      - env: PROJECT=projects/hello/
-        script: if .travis/project-has-new-commits.sh $TRAVIS_COMMIT_RANGE $PROJECT; then cd $PROJECT && npm run test; fi
-      - env: PROJECT=projects/world/
-        script: if .travis/project-has-new-commits.sh $TRAVIS_COMMIT_RANGE $PROJECT; then cd $PROJECT && npm run test; fi
-      - env: PROJECT=projects/he/
         script: if .travis/project-has-new-commits.sh $TRAVIS_COMMIT_RANGE $PROJECT; then cd $PROJECT && npm run test; fi
