@@ -8,4 +8,4 @@ env:
 matrix:
   include:
     - stage: Checks
-        script: if .travis/project-has-new-commits.sh $TRAVIS_COMMIT_RANGE $PROJECT; then cd $PROJECT && npm run test; fi
+      script: if .travis/project-has-new-commits.sh $TRAVIS_COMMIT_RANGE $PROJECT; then cd $PROJECT && npm run test; fi
