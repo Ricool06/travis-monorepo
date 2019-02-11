@@ -2,12 +2,10 @@ language: generic
 
 matrix:
   include:
-    - env:
-      - PROJECT=projects/hello/
-    - env:
-      - PROJECT=projects/world/
-    - env:
-      - PROJECT=projects/he/ #Trailing slash must be included to prevent conflicts with hello/
-
-script:
-- echo $TRAVIS_COMMIT_RANGE
+    - stage: Checks
+      - env: PROJECT=projects/hello/
+        script: if .travis/project-has-new-commits.sh $TRAVIS_COMMIT_RANGE $PROJECT; then cd $PROJECT && npm run test; fi
+      - env: PROJECT=projects/world/
+        script: if .travis/project-has-new-commits.sh $TRAVIS_COMMIT_RANGE $PROJECT; then cd $PROJECT && npm run test; fi
+      - env: PROJECT=projects/he/
+        script: if .travis/project-has-new-commits.sh $TRAVIS_COMMIT_RANGE $PROJECT; then cd $PROJECT && npm run test; fi
