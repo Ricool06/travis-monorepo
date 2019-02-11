@@ -1,4 +1,13 @@
 language: generic
 
+matrix:
+  include:
+    - env:
+      - PROJECT=projects/hello/
+    - env:
+      - PROJECT=projects/world/
+    - env:
+      - PROJECT=projects/he/ #Trailing slash must be included to prevent conflicts with hello/
+
 script:
 - echo $TRAVIS_COMMIT_RANGE
